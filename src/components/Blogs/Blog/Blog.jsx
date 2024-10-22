@@ -1,7 +1,10 @@
 import PropsTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCoffee, faBookmark } from '@fortawesome/free-solid-svg-icons';
+
 
 const Blog = (props) => {
-    const { blog } = props;
+    const { blog, handleBookmarks } = props;
 
     return (
         <div className='pb-5 border-b-2 mb-5'>
@@ -17,7 +20,12 @@ const Blog = (props) => {
                     </div>
                 </div>
                 <div>
-                    <p className='text-[#11111199] text-sm'>{blog.reading_time} min read</p>
+                    <p className='text-[#11111199] text-sm'>{blog.reading_time} min read
+                        <button onClick={()=>handleBookmarks(blog)} className='ml-3'>
+                            <FontAwesomeIcon icon={faBookmark} />
+                        </button>
+                    </p>
+
                 </div>
             </div>
             <div>
@@ -30,7 +38,7 @@ const Blog = (props) => {
                     }
                 </div>
                 <div>
-                    <button className='underline text-[#6047EC] hover:text-[#111111] font-semibold'>Mark as read</button>
+                    <button className='underline text-[#6047EC] hover:text-[#111111] hover:underline-offset-2 font-semibold'>Mark as read</button>
                 </div>
             </div>
         </div>
@@ -38,7 +46,8 @@ const Blog = (props) => {
 };
 
 Blog.propTypes = {
-    blog: PropsTypes.object.isRequired
+    blog: PropsTypes.object.isRequired,
+    handleBookmarks : PropsTypes.func.isRequired,
 }
 
 export default Blog;

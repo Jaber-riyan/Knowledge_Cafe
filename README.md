@@ -1,4 +1,4 @@
-# Knolwdge Cafe
+# Knowledge Cafe
 
 ## Project live link :
 
