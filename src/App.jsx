@@ -13,8 +13,15 @@ function App() {
 
   const handleSpentTimeBlogs = (spentTimeB) => {
     const spentTimeBlogsIds = spentTimeBlogs.map(spentTimeBlog => spentTimeBlog.id);
-    const isExist = spentTimeBlogsIds.includes(spentTimeB.id);
-    if (!isExist) {
+    const spentTimeIsExist = spentTimeBlogsIds.includes(spentTimeB.id);
+    const bookmarksBlogsIds = bookmarks.map(bookmarksBlog => bookmarksBlog.id);
+    const bookmarksIsExist = bookmarksBlogsIds.includes(spentTimeB.id);
+    if (bookmarksIsExist) {
+      const remainingBookmarks = bookmarks.filter(bookmark => bookmark.id !== spentTimeB.id);
+      setBookmarks(remainingBookmarks);
+    }
+
+    if (!spentTimeIsExist) {
       setSpentTimeBlogs(prevBookmarks => [...prevBookmarks, spentTimeB]);
     }
     else {
