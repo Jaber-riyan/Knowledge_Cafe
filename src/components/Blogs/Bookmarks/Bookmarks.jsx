@@ -4,18 +4,9 @@ import PropTypes from 'prop-types';
 
 const Bookmarks = (props) => {
 
-    const [spentTime, setSpentTime] = useState(0);
-    const { bookmarks } = props;
+    const { bookmarks, spentTime } = props;
 
-    // Function to calculate total spent time
-    const spentReadTime = () => {
-        const total = bookmarks.reduce((sum, bookmark) => sum + bookmark.reading_time, 0);
-        return total;
-    };
-
-    useEffect(()=>{
-        setSpentTime(spentReadTime());
-    },[bookmarks])
+    
     return (
         <div className="md:w-1/3">
             <div className="border-2 border-[#6047EC] rounded-lg px-10 py-5 bg-[#e7e4f7] mb-5">
@@ -35,6 +26,7 @@ const Bookmarks = (props) => {
 
 Bookmarks.propTypes = {
     bookmarks: PropTypes.array.isRequired,
+    spentTime : PropTypes.number.isRequired,
 }
 
 export default Bookmarks;

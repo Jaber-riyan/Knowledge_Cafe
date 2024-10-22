@@ -4,7 +4,7 @@ import { faCoffee, faBookmark } from '@fortawesome/free-solid-svg-icons';
 
 
 const Blog = (props) => {
-    const { blog, handleBookmarks } = props;
+    const { blog, handleBookmarks, handleSpentTimeBlogs } = props;
 
     return (
         <div className='pb-5 border-b-2 mb-5'>
@@ -38,7 +38,7 @@ const Blog = (props) => {
                     }
                 </div>
                 <div>
-                    <button className='underline text-[#6047EC] hover:text-[#111111] hover:underline-offset-2 font-semibold'>Mark as read</button>
+                    <button onClick={()=> handleSpentTimeBlogs(blog)} className='underline text-[#6047EC] hover:text-[#111111] hover:underline-offset-2 font-semibold'>Mark as read</button>
                 </div>
             </div>
         </div>
@@ -48,6 +48,7 @@ const Blog = (props) => {
 Blog.propTypes = {
     blog: PropsTypes.object.isRequired,
     handleBookmarks : PropsTypes.func.isRequired,
+    handleSpentTimeBlogs : PropsTypes.func.isRequired,
 }
 
 export default Blog;
